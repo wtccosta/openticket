@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="~{base :: head('Home')}"></head>
+<head>
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css">
+
+<link rel="stylesheet"
+	href="/webjars/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="row mt-5">
+			<div class="col d-flex justify-content-center">
+				<div class="card p-3" style="width: 30rem; border-radius: 25px !important;">
+					<div class="card-header text-center bg-primary text-white m-5-" style="border-radius: 5px !important;">
+						<p class=" display-4">Autenticação
+						<p>
+							<span>Teleman<em>NEO</em></span>
+					</div>
+					<div class="card-body">
+						<form th:action="@{/login}" method="post">
+							<div th:if="${alerta != null}"
+								th:class="${alerta == 'erro'} ? 'alert alert-danger' : 'alert alert-success'"
+								role="alert">
+								<h4 th:text="${titulo}" class="alert-heading">Credenciais...</h4>
+								<p th:text="${texto}">Login ou senha incorretos...</p>
+								<hr>
+								<p class="mb-0">
+									<small th:text="${subtexto}">Acesso permitido...</small>
+								</p>
+							</div>
+
+							<div class="form-group">
+								<label for="InputUsername">Usuário</label> <input type="text"
+									class="form-control" name="username" id="InputUsername"  required autofocus>
+							</div>
+							<div class="form-group">
+								<label for="InputPassword">Senha</label> <input type="password"
+									class="form-control" name="password" id="InputPassword" required>
+							</div>
+
+
+							<input type="submit" class="btn btn-info" value="Logar" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

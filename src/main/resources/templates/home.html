@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="~{base :: head('Home')}"></head>
+<body>
+	<nav th:replace="~{base :: menu}"></nav>
+	
+	<div class="container">
+	<div th:replace="~{base :: alerta-sucesso}"></div>
+		<div class="row mb-3">
+			<div class="col">
+				<a th:href="@{/products/add}" class="btn btn-primary"><span class="oi oi-plus"></span> Adicionar número/ramal</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<table class="table table-striped table-hover" id="listNumbers">
+					<thead>
+						<tr>
+							<th>Número/Ramal</th>
+							<th>Local</th>
+							<th>Data Atualização</th>
+							<th>Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="produto : ${produtos}">
+							<td th:text="${produto.linhaOuRamal}">LinhaOURamal</td>
+							<td th:text="${produto.local.nome}">Local</td>
+							<td th:text="${#temporals.format(produto.dataEdicao, 'dd/MM/yyyy HH:mm')}">Data Inserção</td>
+							<td class="text-center"> <a href="details.html" th:href="@{|/products/${produto.id}|}"><span class="oi oi-eye"></span></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div th:replace="~{base :: myScripts}"></div>
+	
+	
+ 
+<link rel="stylesheet" type="text/css" th:href="@{/webjars/datatables/1.10.24/css/jquery.dataTables.min.css}">
+
+<script type="text/javascript" th:src="@{/webjars/datatables/1.10.24/js/jquery.dataTables.min.js}"></script>
+
+	<script type="text/javascript">
+
+$(document).ready(function() {
+    $('#listNumbers').DataTable( {
+        language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.10.22/i18n/Portuguese-Brasil.json'
+        }
+    } );
+} );
+	</script>
+
+
+</body>
+</html>

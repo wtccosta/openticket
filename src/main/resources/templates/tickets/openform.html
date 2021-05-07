@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head th:replace="~{base :: head('Abertura de chamados')}"></head>
+
+<body>
+	<div class="container d-flex flex-column min-vh-100">
+		<div th:replace="~{base :: alerta-sucesso}"></div>
+		<div class="row mt-5"><a href="https://www.corumba.ms.gov.br"> <span class="material-icons p-5 text-dark" style="font-size: 40px;">home</span></a>
+			<div class="col">
+				<div class="card">
+					<div class="bg-dark text-white card-header text-center font-weight-bolder">Abertura de Chamados Para
+						GTIC</div>
+					<form th:object="${ticket}" action="#" th:action="@{/tickets/create}" method="post">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-6 col-sm-12">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><span class="oi oi-person"></span></span>
+										</div>
+										<input type="text" class="form-control" placeholder="Comunicante"
+											th:field="*{communicating}" th:errorClass="is-invalid">
+										<div th:errors="*{communicating}" class="invalid-feedback">Error</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><span class="material-icons">
+													contact_phone
+												</span></span>
+										</div>
+										<input type="text" class="form-control" placeholder="Telefone para contato"
+											th:field="*{phone}" th:errorClass="is-invalid">
+										<div th:errors="*{phone}" class="invalid-feedback">Error</div>
+									</div>
+								</div>
+							</div>
+							<!--Fim primeira linha-->
+
+							<div class="row">
+								<div class="col-12">
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="material-icons input-group-text">
+												add_location
+											</span>
+										</div>
+										<input type="text" class="form-control" placeholder="Nome do local"
+											th:field="*{place}" th:errorClass="is-invalid">
+										<div th:errors="*{place}" class="invalid-feedback">Error</div>
+										<input type="text" class="form-control" placeholder="Endereço"
+											th:field="*{address}" th:errorClass="is-invalid">
+										<div th:errors="*{address}" class="invalid-feedback">Error</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12">
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><span class="material-icons">
+													hail
+												</span></span>
+										</div>
+										<input type="text" class="form-control" placeholder="Título"
+											th:field="*{ticketName}" th:errorClass="is-invalid">
+										<div th:errors="*{ticketName}" class="invalid-feedback">Error</div>
+									</div>
+								</div>
+							</div>
+							<!--Fim terceira linha-->
+
+							<div class="row mt-4">
+								<div class="col-12">
+									<div class="form-group">
+										<label for="comment"><span class="material-icons p-2 bg-secondary mx-3">
+												support_agent
+											</span>Relate o problema existente ou o serviço desejado:</label>
+										<textarea class="form-control" rows="5" id="comment" th:field="*{content}"
+											th:errorClass="is-invalid"></textarea>
+										<div th:errors="*{content}" class="invalid-feedback">Error</div>
+									</div>
+								</div>
+							</div>
+							<!--Fim quarta linha-->
+
+
+
+						</div>
+						<div class="row my-3">
+							<div class="col d-flex justify-content-center">
+								<button type="submit" class="btn btn-secondary" id="enviar">Abrir Chamado!</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+	<!--Fim container-->
+	<div th:replace="~{base :: myScripts}"></div>
+	<div th:replace="~{base :: select2}"></div>
+	<div th:replace="~{base :: mask}"></div>
+
+	<head th:replace="~{base :: footer}"></head>
+</body>
+
+
+
+
+
+</html>

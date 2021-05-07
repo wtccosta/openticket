@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="~{base :: head('Home')}"></head>
+<body>
+	<div class="conteiner">
+
+		<div class="row mt-5">
+		
+			 <div th:if="${param.error}">
+            <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+        </div>	
+		
+			
+			<div class="col d-flex justify-content-center">
+				<div class="card" style="width: 30rem;">
+					<div class="card-header text-center bg-primary text-white mb-3 ">
+					<p class=" display-4">Autenticação<p>
+					<span>Teleman<em>NEO</em></span>
+					</div>
+					<div class="card-body">
+						<form th:action="@{/login}" method="post">
+							<div class="form-group">
+								<label for="InputUsername">Usuário</label> <input type="text"
+									class="form-control" name="username" id="InputUsername">
+							</div>
+							<div class="form-group">
+								<label for="InputPassword">Senha</label> <input
+									type="password" class="form-control" name="password"
+									id="InputPassword">
+							</div>
+
+
+							<input type="submit" class="btn btn-info" value="Logar" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
