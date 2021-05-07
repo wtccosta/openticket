@@ -64,11 +64,11 @@ public class TicketDTO implements Serializable {
 	
 	private String assemblyTicketContent() {
 		String response = "<p>Chamado aberto por: "+this.communicating + "</p>"
-		+"<p>Conteúdo: </p>"
+		+"<p><strong>Conteúdo</strong>: </p>"
 		+"<p>"+this.content+"</p>"
-		+"<p>Local: "+this.place+"</p>"
-		+"<p>Endereço: "+this.address+"</p>"
-		+"<p>Telefone para contato: "+this.phone+"</p>";
+		+"<p><strong>Local</strong>: "+this.place+"</p>"
+		+"<p><strong>Endereço</strong>: "+this.address+"</p>"
+		+"<p><strong>Telefone para contato</strong>: "+this.phone+"</p>";
 		return response;
 	}
 
