@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -15,24 +16,22 @@ import br.gov.ms.corumba.opentickets.domain.dto.TicketDTO;
 import br.gov.ms.corumba.opentickets.domain.service.TicketService;
 
 @Controller
-@RequestMapping(value = "/tickets")
+@RequestMapping("tickets")
 public class TicketsController {
 	
 	@Autowired
 	private TicketService service;
 
-	@GetMapping(value = "/openform")
-	public String openform(Model model) {
+	@GetMapping("openform")
+	public String openform(@ModelAttribute  TicketDTO ticket, Model model) {
 		model.addAttribute("ticket", new TicketDTO());
-		return "tickets/openform";
+		return "ticket/openform";
 	}
 	
-	@PostMapping("/create")
-	public String create(@Valid TicketDTO ticket, BindingResult result, RedirectAttributes attr, Model model) {
+	@PostMapping("create")
+	public String create(@Valid @ModelAttribute("ticket") TicketDTO ticket, BindingResult result, RedirectAttributes attr) {
 		if(result.hasErrors()) {
-			model.addAttribute("ticket", ticket);
-			attr.addFlashAttribute("falha", "Algo deu errado.");
-			return "tickets/openform";
+			return "ticket/openform";
 		}
 		try {
 			var ticketSaved = service.create(ticket);

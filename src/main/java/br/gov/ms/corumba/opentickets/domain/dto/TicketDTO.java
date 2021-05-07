@@ -12,16 +12,16 @@ public class TicketDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
-	@NotBlank(message = "Nome não pode estar em branco.")
+	@NotBlank(message = "Campo comunicante não pode estar em branco!")
 	private String communicating;
-	@NotBlank
+	@NotBlank (message = "Campo Telefone não pode estar em branco!")
 	private String phone;
-	@NotBlank
+	@NotBlank (message = "Precisamos saber o local do atendimento!")
 	private String place;
-	@NotBlank
+	@NotBlank (message = "Precisamos do endereço")
 	private String address;
 	private String ticketName;
-	@NotBlank
+	@NotBlank (message = "Precisamos que relate o ocorrido ou solicitação pretendida!")
 	private String content;
 	
 	
