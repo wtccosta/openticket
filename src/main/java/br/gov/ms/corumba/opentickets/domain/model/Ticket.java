@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,5 +35,31 @@ public class Ticket {
 	@Column(name = "date_creation")
 	@CreationTimestamp
 	private LocalDateTime date;
+	
+	@Column(name = "date")
+	@CreationTimestamp
+	private LocalDateTime dateSimple;
+	
+	@Column(name = "date_mod")
+	@UpdateTimestamp
+	private LocalDateTime dateMod;
+	
 	private String content;
+	
+	private Integer status = 2;
+	
+	@Column(name = "requesttypes_id")
+	private Integer openMode = 8;
+	
+	private Integer urgency = 3;
+	
+	private Integer impact = 3;
+	
+	private Integer priority = 3;
+	
+	private Integer type = 1;
+	
+	private Integer globalValidation = 1;
+	
+	
 }

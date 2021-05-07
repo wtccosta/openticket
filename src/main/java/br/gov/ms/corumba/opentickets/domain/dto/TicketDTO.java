@@ -55,12 +55,11 @@ public class TicketDTO implements Serializable {
 	}
 	
 	public Ticket toModel() {
-		return Ticket.builder()
-				.entity(1)
-				.id(this.id)
-				.name(this.ticketName)
-				.content(this.assemblyTicketContent())
-				.build();
+		Ticket model = new Ticket();
+		model.setId(this.id);
+		model.setName(this.ticketName);
+		model.setContent(this.assemblyTicketContent());
+		return model;
 	}
 	
 	private String assemblyTicketContent() {
